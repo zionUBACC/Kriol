@@ -1,3 +1,4 @@
+// Filename: cmd/api/main.go
 package main
 
 import (
@@ -49,15 +50,15 @@ func main() {
 
     // Declare an instance of the application struct, containing the config struct and 
     // the logger.
-    // app := &application{
-    //     config: cfg,
-    //     logger: logger,
-    // }
+    app := &application{
+        config: cfg,
+        logger: logger,
+    }
 
     // Declare a new servemux and add a /v1/healthcheck route which dispatches requests
     // to the healthcheckHandler method (which we will create in a moment).
     mux := http.NewServeMux()
-    //mux.HandleFunc("/v1/healthcheck", app.healthcheckHandler)
+    mux.HandleFunc("/v1/healthcheck", app.healthcheckHandler)
 
     // Declare a HTTP server with some sensible timeout settings, which listens on the
     // port provided in the config struct and uses the servemux we created above as the 
